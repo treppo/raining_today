@@ -11,7 +11,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True,
     extensions=['jinja2.ext.autoescape'])
 
-DEFAULT_CITY = 'Dublin'
+DEFAULT_CITY = 'dublin'
 DEFAULT_COORDINATES = '53.3494299,-6.2600969'
 
 class MainHandler(webapp2.RequestHandler):
@@ -21,7 +21,7 @@ class MainHandler(webapp2.RequestHandler):
     city = self.request.headers.get('X-AppEngine-City') or DEFAULT_CITY
     coordinates = self.request.headers.get('X-AppEngine-CityLatLong') or DEFAULT_COORDINATES
     variables = {
-            'location': city,
+            'location': city.capitalize(),
             'is_raining': is_raining(coordinates),
             }
 
