@@ -1,0 +1,35 @@
+body {
+  background-image: url(bg.png);
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  height: 15em;
+  width: 50%;
+
+  text-align: center;
+}
+
+.main {
+  padding: 2em;
+}
+
+.question {
+  font-size: 2em;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.answer {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.attribution {
+  margin-top: 5em;
+}
