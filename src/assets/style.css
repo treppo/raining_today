@@ -9,7 +9,7 @@ body {
   right: 0;
   left: 0;
   margin: auto;
-  height: 15em;
+  height: 25em;
   width: 50%;
 
   text-align: center;
@@ -17,6 +17,10 @@ body {
 
 .main {
   padding: 2em;
+}
+
+.location-image img {
+  max-width: 100%;
 }
 
 .question {

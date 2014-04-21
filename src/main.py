@@ -5,6 +5,7 @@ import webapp2
 import jinja2
 
 from forecast import is_raining
+from photo import location_photo
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -21,6 +22,7 @@ class MainHandler(webapp2.RequestHandler):
     city = self.request.headers.get('X-AppEngine-City') or DEFAULT_CITY
     coordinates = self.request.headers.get('X-AppEngine-CityLatLong') or DEFAULT_COORDINATES
     variables = {
+            'photo': location_photo(coordinates),
             'location': city.capitalize(),
             'is_raining': is_raining(coordinates),
             }
