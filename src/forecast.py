@@ -15,4 +15,4 @@ def is_raining(coordinates):
     lat, lng = coordinates.split(',')
     forecast = forecastio.load_forecast(api_key, lat, lng, datetime.today())
 
-    return 'Yup!' if is_raining_in_any(forecast.hourly().data) else 'Nope!'
+    return is_raining_in_any(forecast.hourly().data)

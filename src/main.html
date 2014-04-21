@@ -9,7 +9,13 @@
     <main class=container>
       <div class=main>
         <h1 class=question>Is it going to rain in {{ location }} today?</h1>
-        <div class=answer>{{ is_raining }}</div>
+        <div class=answer>
+          {% if is_raining %}
+            Yup! Sorry.
+          {% else %}
+            Nope! Enjoy the weather.
+          {% endif %}
+        </div>
       </div>
 
       <div class=attribution>
