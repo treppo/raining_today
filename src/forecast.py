@@ -1,5 +1,4 @@
 import os
-
 from datetime import datetime
 
 import forecastio
@@ -10,9 +9,10 @@ def is_precip_type_rain(data_point):
 def is_raining_in_any(data_points):
     len(filter(is_precip_type_rain, data_points)) > 0
 
-def is_raining(coordinates):
+def hourly_weather_for(location):
     api_key = os.environ['FORECASTIO_KEY']
-    lat, lng = coordinates.split(',')
-    forecast = forecastio.load_forecast(api_key, lat, lng, datetime.today())
+    forecast = forecastio.load_forecast(api_key, location.lat, location.lon, datetime.today())
+    return forecast.hourly().data
 
-    return is_raining_in_any(forecast.hourly().data)
+def is_raining(location):
+    return is_raining_in_any(hourly_weather_for(location))
