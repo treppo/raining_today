@@ -22,7 +22,7 @@ class MainHandler(webapp2.RequestHandler):
     city = self.request.headers.get('X-AppEngine-City') or DEFAULT_CITY
     coordinates = self.request.headers.get('X-AppEngine-CityLatLong') or DEFAULT_COORDINATES
     variables = {
-            'photo': location_photo(coordinates, city),
+            'photo': location_photo(city),
             'location': city.capitalize(),
             'is_raining': is_raining(coordinates),
             }

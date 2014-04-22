@@ -15,10 +15,8 @@ def url(photo):
 
     return 'http://farm1.staticflickr.com/{}/{}_{}_c.jpg'.format(server, photo_id, secret)
 
-def location_photo(coordinates, city):
+def location_photo(city):
 
-    lat, lng = coordinates.split(',')
-
-    results = flickr.photos_search(lat=lat, lon=lng, radius='10', tag=city, per_page='1')
+    results = flickr.photos_search(text=city, per_page='1', sort='interestingness-desc')
     photo = get_first(results)
     return url(photo)
