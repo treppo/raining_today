@@ -1,3 +1,7 @@
 env/
 .Python
 src/app.yaml
+src/flickrapi
+src/forecastio
+src/requests
+src/urllib3
