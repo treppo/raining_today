@@ -2,8 +2,10 @@ import os
 
 import flickrapi
 
-api_key = os.environ['FLICKR_KEY']
-flickr = flickrapi.FlickrAPI(api_key, store_token=False)
+def photos(city):
+    api_key = os.environ['FLICKR_KEY']
+    flickr = flickrapi.FlickrAPI(api_key, store_token=False)
+    return flickr.photos_search(text=city, per_page='1', sort='interestingness-desc')
 
 def get_first(set):
     return set.find('photos').findall('photo')[0]
@@ -16,7 +18,4 @@ def url(photo):
     return 'http://farm1.staticflickr.com/{}/{}_{}_c.jpg'.format(server, photo_id, secret)
 
 def location_photo(city):
-
-    results = flickr.photos_search(text=city, per_page='1', sort='interestingness-desc')
-    photo = get_first(results)
-    return url(photo)
+    return url(get_first(photos(city)))
