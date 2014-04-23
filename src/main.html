@@ -9,7 +9,13 @@
     <main class=container>
       <div class=main>
         <div class=location-image>
-          <img src="{{ photo }}" alt="a generic picture of {{ location }}" />
+            <img src="{{ photo.url }}" alt="a generic picture of {{ location }}" />
+            {% if not photo.is_public_domain %}
+              <div>
+                &copy; <a href="{{ photo.url_original }}">{{ photo.author }}</a> –
+                <a href="{{ photo.license.url }}">{{ photo.license.name }}</a>
+              </div>
+            {% endif %}
         </div>
         <h1 class=question>Is it going to rain in {{ location }} today?</h1>
         <div class=answer>
