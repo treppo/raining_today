@@ -69,8 +69,6 @@ def photos(city):
 
 def fetch_first(set):
     first = set.find('photos').findall('photo')[0]
-    import xml
-    print xml.etree.ElementTree.tostring(flickr.photos_getInfo(photo_id = first.attrib['id']).find('photo'))
     return flickr.photos_getInfo(photo_id = first.attrib['id']).find('photo')
 
 def location_photo(city):
