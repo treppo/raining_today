@@ -6,35 +6,35 @@ API_KEY = os.environ['FLICKR_KEY']
 flickr = flickrapi.FlickrAPI(API_KEY, store_token=False)
 LICENSES = {
         "1": {
-            "name": "CC BY NC SA",
+            "name": "Creative Commons BY-NC-SA",
             "url": "http://creativecommons.org/licenses/by-nc-sa/2.0/"
             },
         "2": {
-            "name": "CC BY NC",
+            "name": "Creative Commons BY-NC",
             "url": "http://creativecommons.org/licenses/by-nc/2.0/"
             },
         "3": {
-            "name": "CC NC ND",
+            "name": "Creative Commons BY-NC-ND",
             "url": "http://creativecommons.org/licenses/by-nc-nd/2.0/"
             },
         "4": {
-            "name": "CC BY",
+            "name": "Creative Commons BY",
             "url": "http://creativecommons.org/licenses/by/2.0/"
             },
         "5": {
-            "name": "CC BY SA",
+            "name": "Creative Commons BY-SA",
             "url": "http://creativecommons.org/licenses/by-sa/2.0/"
             },
         "6": {
-            "name": "CC BY ND",
+            "name": "Creative Commons BY-ND",
             "url": "http://creativecommons.org/licenses/by-nd/2.0/"
             },
-        "7": 'public domain'
+        "7": 'public domain',
+        "8": 'united states government work'
     }
 
-
 class Photo:
-    URL_TEMPLATE =  'http://farm1.staticflickr.com/{}/{}_{}_c.jpg'
+    URL_TEMPLATE =  'http://farm1.staticflickr.com/{}/{}_{}.jpg'
 
     def __init__(self, photo_el):
         self.__photo_el = photo_el
@@ -61,7 +61,7 @@ class Photo:
         return LICENSES[self.__photo_el.attrib['license']]
 
     def __is_public_domain(self):
-        return True if self.__photo_el.attrib['license'] == '7' else False
+        return True if self.__photo_el.attrib['license'] in ['7', '8'] else False
 
 def photos(city):
     FREE_LICENSES = '1,2,3,4,5,6,7,8'
