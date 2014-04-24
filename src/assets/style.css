@@ -1,10 +1,10 @@
 body {
   background-image: url(bg.png);
+  font-size: 100%;
 }
 
 .container {
   margin: auto;
-  width: 50%;
   text-align: center;
 }
 
@@ -29,5 +29,12 @@ body {
 }
 
 .attribution {
-  margin-top: 5em;
+  margin-top: 1em;
 }
+
+@media (max-width: 400px) {
+  body {
+    font-size: 87.5%
+  }
+}
+
